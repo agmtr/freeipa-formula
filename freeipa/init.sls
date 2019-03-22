@@ -11,7 +11,7 @@ register:
     - name: ipa-client-install -U --hostname={{ grains['fqdn'] }} \
     --server={{ pillar['freeipa']['server'] }} \
     --domain={{ pillar['freeipa']['domain'] }} \
-    -p {{ pillar['freeipa']['user'] }} -w {{ pillar['freeipa']['pass'] }}
+    -p {{ pillar['freeipa']['user'] }} -w {{ pillar['freeipa']['pass'] }} \
     --mkhomedir
 
 freeipa:

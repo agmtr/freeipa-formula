@@ -8,7 +8,11 @@ client:
 {% if not grains.get('freeipa') %}
 register:
   cmd.run:
-    - name: ipa-client-install -U --hostname={{ grains['fqdn'] }} --mkhomedir --server={{ pillar['freeipa']['server'] }} --domain={{ pillar['freeipa']['domain'] }} -p {{ pillar['freeipa']['user'] }} -w {{ pillar['freeipa']['pass'] }}
+    - name: ipa-client-install -U --hostname={{ grains['fqdn'] }} \
+    --server={{ pillar['freeipa']['server'] }} \
+    --domain={{ pillar['freeipa']['domain'] }} \
+    -p {{ pillar['freeipa']['user'] }} -w {{ pillar['freeipa']['pass'] }}
+    --mkhomedir
 
 freeipa:
   grains.present:
